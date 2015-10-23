@@ -15,10 +15,19 @@ app.use("/static", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
-	res.render('index');
+	res.render('splash');
 });
+
+app.get('/home', function(req, res) {
+	res.render('infoDisplay');
+});
+
+// app.get('/new', function(req, res) {
+	//res.render('');
+	// New Form page doens't exist yet
+// });
 
 // CONNECTED SERVER //
 app.listen(3000, function (){
-  console.log("listening on port 3000");
+  console.log("Server Connected to http://localhost:3000/");
 });
