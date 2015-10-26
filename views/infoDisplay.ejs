@@ -5,39 +5,72 @@
 
 <!-- VIEWABLE APP -->
 <body>
-	<% include ./_bnav %>
+	<!--  include ./_bnav %> -->
 	<!-- CONTENT -->
 	<div class="container">
 		<div class="row">
-			<h2>Machinapocolypse</h2>
+			<h2>Project Title <!-- Machinapocolypse --></h2>
+			<h5>Brief Description of project to be put in when you create a new project.</h5>
 		</div> <!-- col/row div -->
 	</div> <!-- container div -->
 	<div class="container">
 		<div class="row">
-			<div id="geo-col" class="col-md-3 col-md-offset-0">
-				<p>Geography Column</p>
+			<!-- <div id="char-col" class="col-md-3 col-md-offset-0"> -->
+				<p>Character Section</p>
+				<!-- Square card -->
+				<!-- <div class="demo-card-square mdl-card mdl-shadow--2dp">
+				  <div class="mdl-card__title mdl-card--expand">
+				    <h2 class="mdl-card__title-text">Name</h2>
+				  </div>
+				  <div class="mdl-card__supporting-text">
+				  	Preview or small version of the Description
+				  </div>
+				  <div class="mdl-card__actions mdl-card--border">
+				    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				      Open Modal
+				    </a>
+				  </div>
+				</div> -->
+				<ul id="charList">
+					<% for (i=0;i<characters.length;i++){ %>
+					  <li id="<%= characters[i]._id %>"><em><%=characters[i].name %></em><br />
+					  <strong>Age:</strong> <%=characters[i].age %><br />
+					  <strong>Hair:</strong> <%=characters[i].hair %><br />
+					  <!-- <strong>Height:</strong> <%=characters[i].height %><br /> -->
+					  <strong>Skin Tone:</strong> <%=characters[i].skin %><br />
+					  <button class="btn deleteBtn" type="delete" data-id="<%= characters[i]._id %>">Delete</button>
+					  </li><br />
+					<% } %>
+				</ul>
+				<hr>
+				<div class="input-group">
+				  <form action="" id="newCharacter">
+				    <input type="text" name="name" placeholder="Character Name">
+				    <input type="text" name="age" placeholder="Age">
+				    <input type="text" name="hair" placeholder="Hair Color">
+				    <input type="text" name="skin" placeholder="Skin Tone">
+				    <button class="btn" type="submit" id="charSubmitBtn">Submit</button>
+				  </form>
+				</div>
+			<!-- </div> -->
+			<!-- <div id="geo-col" class="col-md-3 col-md-offset-0"> -->
+				<!-- <p>Geography Column</p>
 				<p>The Gyzad</p>
 				<p>The City</p>
-				<p>The Outer Sector</p>
-			</div>
-			<div id="plot-col" class="col-md-3 col-md-offset-0">
-				<p>Plot Point Column</p>
+				<p>The Outer Sector</p> -->
+			<!-- </div> -->
+			<!-- <div id="plot-col" class="col-md-3 col-md-offset-0"> -->
+				<!-- <p>Plot Point Column</p>
 				<p>Training</p>
 				<p>Phase Two</p>
-				<p>Out of Training</p>
-			</div>
-			<div id="char-col" class="col-md-3 col-md-offset-0">
-				<p>Character Column</p>
-				<p>Ani Forfrys</p>
-				<p>Kaeri Forfrys</p>
-				<p>Kryseis Eyt</p>
-			</div>
-			<div id="jot-col" class="col-md-3 col-md-offset-0">
-				<p>Jots Column</p>
+				<p>Out of Training</p> -->
+			<!-- </div> -->
+			<!-- <div id="jot-col" class="col-md-3 col-md-offset-0"> -->
+				<!-- <p>Jots Column</p>
 				<p>Idea 1</p>
 				<p>Idea 2</p>
-				<p>Idea 3</p>
-			</div>
+				<p>Idea 3</p> -->
+			<!-- </div> -->
 		</div> <!-- col/row div -->
 	</div> <!-- container div -->
 </body>

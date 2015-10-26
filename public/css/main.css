@@ -1,3 +1,4 @@
+/*BACKGROUND IMAGE*/
 #splashPage {
 	background-image: url('http://cdn.tutsplus.com/psd/uploads/legacy/0457_Create_a_Realistic_Paper_Texture/final-1-large.jpg');
     background-size: cover;
@@ -6,3 +7,16 @@
     width: 100%;
     text-align: center;
 }
+
+/*PREVIEW CARD*/
+/*.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+}*/
+
+/*OTHER CSS*/
