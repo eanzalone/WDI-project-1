@@ -20,21 +20,16 @@ app.use("/node_modules", express.static("node_modules"));
 //added from Braus-video
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect(
-  process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/project1'
-);
 
 // PAGES //
 
-//var characters =
+var characters =
 // [
 //     { name: 'Ani Forfrys', hair: 'black', age: 19, height: 157, skin: 'Olive' },
 //     { name: 'Kryseis Eyt ', hair: 'blond', age: 19, height: 165, skin: 'Pale AF' }
 //     ];
 
-//require('./models/character.js');
+require('./models/character.js');
 
 
 // app.get('/', function(req, res) {
@@ -120,7 +115,6 @@ app.post('/api/characters', function(req, res){
 
 
 // CONNECTED SERVER //
-// app.listen(3000, function (){
-//   console.log("Server Connected to http://localhost:3000/");
-// });
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, function (){
+  console.log("Server Connected to http://localhost:3000/");
+});

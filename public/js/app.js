@@ -22,12 +22,19 @@ $(document).ready(function(){
 		console.log('Delete Clicked');
 		var itemId = $(this).attr('data-id');
 		console.log(itemId);
-		$.delete('/api/characters/'+itemId, itemId, function(){
-			// parent remove()
-			this.parent.remove();
-			res.json({});
+		$.ajax({
+			url: '/api/characters/'+itemId,
+			type: 'DELETE',
+			success: function(response) {
+			  //$('.deleteBtn').closest('li').remove();
+			  $('li'+itemId).remove();
+			}		
 		});
 	});
+
+
+
+
 
 
 
