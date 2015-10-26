@@ -20,7 +20,11 @@ app.use("/node_modules", express.static("node_modules"));
 //added from Braus-video
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//mongoose.connect('mongodb://localhost/project1');
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/project1'
+);
 
 // PAGES //
 
@@ -116,6 +120,7 @@ app.post('/api/characters', function(req, res){
 
 
 // CONNECTED SERVER //
-app.listen(3000, function (){
-  console.log("Server Connected to http://localhost:3000/");
-});
+// app.listen(3000, function (){
+//   console.log("Server Connected to http://localhost:3000/");
+// });
+app.listen(process.env.PORT || 3000);

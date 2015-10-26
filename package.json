@@ -16,6 +16,9 @@
     "material-design-lite": "^1.0.5",
     "mongoose": "^4.1.11"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
