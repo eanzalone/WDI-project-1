@@ -22,17 +22,31 @@ $(document).ready(function(){
 		console.log('Delete Clicked');
 		var itemId = $(this).attr('data-id');
 		console.log(itemId);
+		//deleteItem(itemId);
+		var btnClicked = $(this);
 		$.ajax({
 			url: '/api/characters/'+itemId,
 			type: 'DELETE',
 			success: function(response) {
-			  //$('.deleteBtn').closest('li').remove();
-			  $('li'+itemId).remove();
+				//console.log(response);
+				btnClicked.closest('li').remove();
 			}		
 		});
 	});
 
-
+	// function deleteItem(context) {
+	// 	console.log("context in deleteItem: ", context);
+	//  	var charId = $(context).data().id;
+	//  	console.log(charId);
+	 		
+	//  		$.ajax({
+	//  			url: '/api/characters/' + charId,
+	//  			type: 'DELETE',
+	//  			success: function(response) {
+	//  			  $(context).closest('li').remove();
+	//  			}		
+	//  		});
+	// });
 
 
 

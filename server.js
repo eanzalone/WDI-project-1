@@ -22,15 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // PAGES //
-
-var characters =
-// [
-//     { name: 'Ani Forfrys', hair: 'black', age: 19, height: 157, skin: 'Olive' },
-//     { name: 'Kryseis Eyt ', hair: 'blond', age: 19, height: 165, skin: 'Pale AF' }
-//     ];
-
-require('./models/character.js');
-
+// var characters = require('./models/character.js');
 
 // app.get('/', function(req, res) {
 //  res.render('splash');
@@ -59,7 +51,15 @@ app.post('/api/characters', function(req, res){
     res.status(200).json(newChar);
 });
 
-// app.delete('/api/characters/:id')
+app.delete('/api/characters/:id', function(req, res){
+    var targetId = req.params.id;
+    console.log(targetId);
+    db.Character.findOneAndRemove({_id:targetId}, function(err, deleteItem){
+        if (err) {return console.log('delete error: ' + err); }
+        //console.log(deleteItem() + " removed");
+        res.json(deleteItem);
+    });
+});
 // db.character.findById
 // req.params.id
 
