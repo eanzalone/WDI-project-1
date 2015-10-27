@@ -45,6 +45,7 @@ app.post('/api/characters', function(req, res){
     var newChar = req.body;
     db.Character.create(newChar, function(err, newChar){
         console.log(newChar);
+        //push into user model
     });
     // characters.push(newChar);
     res.status(200).json(newChar);
