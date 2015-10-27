@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     res.render('splash');
 // });
 
-app.get('/dash', function (req, res) {
+app.get('/', function (req, res) {
     db.Character.find({}, function (err, characters){    
 	   res.render('dashboard', {characters: characters});
     });
