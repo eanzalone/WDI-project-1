@@ -24,14 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // PAGES //
 // var characters = require('./models/character.js');
 
-// app.get('/', function(req, res) {
-//  res.render('splash');
-// });
-
-// app.get('/home') -> changed to / while I'm editing the page for simplicity
 app.get('/', function(req, res) {
+ res.render('splash');
+});
+
+app.get('/dash', function(req, res) {
     db.Character.find({}, function(err, characters){    
-	   res.render('infoDisplay', {characters: characters});
+	   res.render('dashboard', {characters: characters});
     });
 });
 
@@ -56,21 +55,9 @@ app.delete('/api/characters/:id', function(req, res){
     console.log(targetId);
     db.Character.findOneAndRemove({_id:targetId}, function(err, deleteItem){
         if (err) {return console.log('delete error: ' + err); }
-        //console.log(deleteItem() + " removed");
         res.json(deleteItem);
     });
 });
-// db.character.findById
-// req.params.id
-
-// app.delete('/api/foods/:id', function(req, res){
-//     var idInt = parseInt(req.params.id);
-//     var deletedObj = where(foods, {id: idInt});
-//     console.log(deletedObj);
-//     var idRemove = foods.indexOf(deletedObj);
-//     foods.splice(idRemove, 1);
-//     res.json(foods);
-// });
 
 
 

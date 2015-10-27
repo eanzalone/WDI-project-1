@@ -14,7 +14,7 @@ $(document).ready(function(){
 			console.log(newPost);
 			// WRITE PROPER APPEND DATA
 			$('#charList').append('<li>' + newPost.name + '</li>');
-		    // $('#newCharacter')[0].reset();
+		    $('#newCharacter')[0].reset();
 		});
 	});
 
@@ -29,7 +29,7 @@ $(document).ready(function(){
 			type: 'DELETE',
 			success: function(response) {
 				//console.log(response);
-				btnClicked.closest('li').remove();
+				$('[data-id="#'+itemId+'"]').remove();
 			}		
 		});
 	});
