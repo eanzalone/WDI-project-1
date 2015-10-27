@@ -3,6 +3,7 @@ console.log('Client Side JS is connected.');
 
 $(document).ready(function(){
 
+// ADD NEW CHARACTER
 	$('#newCharacter').submit(function(e){
 		e.preventDefault();
 		console.log('Submit Clicked!');
@@ -18,6 +19,7 @@ $(document).ready(function(){
 		});
 	});
 
+// DELETE CHARACTER DETAIL
 	$('.deleteBtn').click(function(e){
 		console.log('Delete Clicked');
 		var itemId = $(this).attr('data-id');
@@ -34,22 +36,34 @@ $(document).ready(function(){
 		});
 	});
 
-	// function deleteItem(context) {
-	// 	console.log("context in deleteItem: ", context);
-	//  	var charId = $(context).data().id;
-	//  	console.log(charId);
-	 		
-	//  		$.ajax({
-	//  			url: '/api/characters/' + charId,
-	//  			type: 'DELETE',
-	//  			success: function(response) {
-	//  			  $(context).closest('li').remove();
-	//  			}		
-	//  		});
+// SIGNUP FORM
+	// breakout ver //
+	// $('#newUserSubmit').click(function(e){
+	// 	e.preventDefault();
+	// 	console.log('User Submitted');
+	// 	// select the form and serialize its data
+	// 	var signupData = $("#signup-form").serialize();
+	// 	console.log(signupData);
+	// 	// send POST request to /users with the form data
+	// 	$.post('/users', signupData, function(response){
+	// 		console.log(response);
+	// 	});
 	// });
+	
+	// braus ver //
+	$('#signup-form').submit(function(e){
+		e.preventDefault();
+		var user = $(this).serialize();
+		console.log(user);
+
+		$.post('/users', user, function (data){
+			console.log(data);
+		});
+	});
+
+// LOGIN FORM
 
 
 
 
-
-});
+}); // document ready function close

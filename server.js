@@ -24,12 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // PAGES //
 // var characters = require('./models/character.js');
 
-app.get('/', function(req, res) {
- res.render('splash');
-});
+// app.get('/', function (req, res) {
+//     res.render('splash');
+// });
 
-app.get('/dash', function(req, res) {
-    db.Character.find({}, function(err, characters){    
+app.get('/dash', function (req, res) {
+    db.Character.find({}, function (err, characters){    
 	   res.render('dashboard', {characters: characters});
     });
 });
@@ -40,10 +40,10 @@ app.get('/api/characters', function (req, res){
     res.json(characters);
 });
 
-app.post('/api/characters', function(req, res){
+app.post('/api/characters', function (req, res){
     console.log(req.body);
     var newChar = req.body;
-    db.Character.create(newChar, function(err, newChar){
+    db.Character.create(newChar, function (err, newChar){
         console.log(newChar);
         //push into user model
     });
@@ -51,20 +51,30 @@ app.post('/api/characters', function(req, res){
     res.status(200).json(newChar);
 });
 
-app.delete('/api/characters/:id', function(req, res){
+app.delete('/api/characters/:id', function (req, res){
     var targetId = req.params.id;
     console.log(targetId);
-    db.Character.findOneAndRemove({_id:targetId}, function(err, deleteItem){
+    db.Character.findOneAndRemove({_id:targetId}, function (err, deleteItem){
         if (err) {return console.log('delete error: ' + err); }
         res.json(deleteItem);
     });
 });
 
+app.get('/signup', function (req, res) {
+    res.render('_signup');
+});
 
+app.get('/login', function (req, res) {
+    res.send('login coming soon');
+    //res.render('_login');
+});
 
-
-
-
+// A create user route - creates a new user with a secure password
+app.post('/users', function (req, res) {
+    console.log('request body: ', req.body);
+    // User
+    res.json({msg: "hella."});
+});
 
 
 
@@ -79,15 +89,11 @@ app.delete('/api/characters/:id', function(req, res){
 
 
 // app.get('/new', function(req, res) {
-	//res.render('');
+	// res.render('');
 	// New Form not yet created
 	// What is better practice, a different page for each type of form, or single page with options?
 // });
 
-// app.get('/profile', function(req, res) {
-// 	res.render('');
-//	Profile not yet created
-// });
 
 
 
