@@ -3,6 +3,15 @@ console.log('Client Side JS is connected.');
 
 $(document).ready(function(){
 
+$("#newCharacter").validate();
+$('#newCharacter input').on('blur keyup', function() {
+    if ($("#newCharacter").valid()) {
+        $('#charSubmitBtn').prop('disabled', false);  
+    } else {
+        $('#charSubmitBtn').prop('disabled', 'disabled');
+    }
+});
+
 // ADD NEW CHARACTER
 	$('#newCharacter').submit(function(e){
 		e.preventDefault();
@@ -14,8 +23,8 @@ $(document).ready(function(){
 		$.post('/api/characters', characterData, function(newPost){
 			console.log(newPost);
 			// WRITE PROPER APPEND DATA
-			$('#charList').append('<li>' + newPost.name + '</li>');
-		    $('#newCharacter')[0].reset();
+			// $('#charList').append('<li>' + newPost.name + '</li>');
+		    // $('#newCharacter')[0].reset();
 		});
 	});
 
@@ -36,33 +45,69 @@ $(document).ready(function(){
 		});
 	});
 
-// SIGNUP FORM
-	// breakout ver //
-	// $('#newUserSubmit').click(function(e){
-	// 	e.preventDefault();
-	// 	console.log('User Submitted');
-	// 	// select the form and serialize its data
-	// 	var signupData = $("#signup-form").serialize();
-	// 	console.log(signupData);
-	// 	// send POST request to /users with the form data
-	// 	$.post('/users', signupData, function(response){
-	// 		console.log(response);
-	// 	});
-	// });
-	
-	// braus ver //
-	$('#signup-form').submit(function(e){
-		e.preventDefault();
-		var user = $(this).serialize();
-		console.log(user);
-
-		$.post('/users', user, function (data){
+// CHECK AUTH
+	function checkAuth() {
+		$.get('/current-user', function (data) {
 			console.log(data);
+			if (data.user) {
+				$('.not-logged-in').hide();
+				$('.logged-in').show();
+			} else {
+				$('.not-logged-in').show();
+				$('.logged-in').hide();
+			}
+		});
+	}
+	checkAuth();
+
+// SIGNUP FORM
+	$("#signup-form").submit(function(e) {
+		e.preventDefault();
+		console.log('Submit Clicked');
+		var user = $(this).serialize();
+
+		$.post('/users', user, function (data) {
+			console.log(data);
+			checkAuth();
 		});
 	});
 
 // LOGIN FORM
+	$("#login-form").on('submit', function(e){
+		e.preventDefault();
+		console.log('Login Clicked');
+		var user = $(this).serialize();
 
+		$.ajax({
+			url: '/login',
+			type: 'POST',
+			data: user
+		})
+		.done(function (data){
+			console.log("user logged in");
+			checkAuth();
+			window.location.href='/dash';
+		})
+		.fail(function (data){
+			console.log("failed to log in");
+		});
+	});
+
+// LOGOUT
+	$('#logoutBtn').click(function(e){
+		e.preventDefault();
+		console.log('Logout Clicked');
+		$.get('/api/logout', function (data){
+		})
+		.done(function (data){
+			console.log("user logged out");
+			checkAuth();
+			window.location.href='/';
+		})
+		.fail(function (data){
+			console.log("failed to log out");
+		});
+	});
 
 
 

@@ -1,11 +1,26 @@
 /*BACKGROUND IMAGE*/
 #splashPage {
-	background-image: url('http://cdn.tutsplus.com/psd/uploads/legacy/0457_Create_a_Realistic_Paper_Texture/final-1-large.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    text-align: center;
+  background-image: url('http://cdn.tutsplus.com/psd/uploads/legacy/0457_Create_a_Realistic_Paper_Texture/final-1-large.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  text-align: center;
+}
+
+#dashPage {
+  /*background-image: url('http://www.resimsi.com/wp-content/uploads/2015/07/wallpaper-cool-background-paper-watercolor.jpg');*/
+  /*OR*/
+  /*background-image: url('http://7-themes.com/data_images/out/68/7005832-old-paper-photos.jpg');*/
+  /*TEMP*/
+  background-color: tan;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+#front-page {
+  text-align: center;
 }
 
 /*PREVIEW CARD*/

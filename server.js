@@ -5,9 +5,9 @@ var express = require("express"),
     app = express(),
     path = require("path"),
     bodyParser = require("body-parser"),
-    db = require("./models"),
-    mongoose = require("mongoose");
-    //mdl = require("material-design-lite");
+    db = require("./models/index.js"),
+    mongoose = require("mongoose"),
+    session = require('express-session');
 
 // CONFIG //
 // set ejs as view engine
@@ -21,23 +21,35 @@ app.use("/node_modules", express.static("node_modules"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// PAGES //
-// var characters = require('./models/character.js');
+// MIDDLEWARE
+// set session options
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'SuperSecretCookie',
+  cookie: { maxAge: 600000 }
+}));
 
-// app.get('/', function (req, res) {
-//     res.render('splash');
-// });
+// PAGES //
 
 app.get('/', function (req, res) {
+    res.render('frontPage');
+});
+
+app.get('/dash', function (req, res) {
     db.Character.find({}, function (err, characters){    
 	   res.render('dashboard', {characters: characters});
     });
 });
 
+app.get('/new-character', function (req, res) {
+    res.render('charForm');
+});
+
 // Is the data connected?
 app.get('/api/characters', function (req, res){
     // send character data as JSON
-    res.json(characters);
+    res.json(db.Character);
 });
 
 app.post('/api/characters', function (req, res){
@@ -60,24 +72,54 @@ app.delete('/api/characters/:id', function (req, res){
     });
 });
 
-app.get('/signup', function (req, res) {
-    res.render('_signup');
+// app.get('/signup', function (req, res) {
+//     res.render('_signup');
+// });
+
+app.get('/current-user', function (req, res) {
+    res.json({ user: req.session.user });
 });
 
-app.get('/login', function (req, res) {
-    res.send('login coming soon');
-    //res.render('_login');
-});
+// LOGIN
+    // app.get('/login', function (req, res) {
+    //     // res.send('login coming soon');
+    //     res.render('_login');
+    // });
 
-// A create user route - creates a new user with a secure password
-app.post('/users', function (req, res) {
-    console.log('request body: ', req.body);
-    // User
-    res.json({msg: "hella."});
-});
+    app.post('/login', function (req, res) {
+        var user = req.body;
+        console.log(user);
+        db.User.authenticate(user.email, user.password, function (err, user) {
+            if (err) {
+                console.log("Error: " + err);
+            } else {
+                req.session.userId = user._id;
+                req.session.user = user;
+                console.log(user);
+                res.json(user);
+            }
+        });
+    });
 
+// SIGNUP
+    // A create user route - creates a new user with a secure password
+    app.post('/users', function (req, res) {
+        var userParams = req.body;
+        db.User.createSecure(userParams.email, userParams.password, function (err, user) {
+            user.penname = req.body.penname;
+            user.save();
+            console.log(err || user);
+            // console.log(user);
+            req.session.userId = user._id;
+            res.json({ user: user, msg: "User Created Successfully!" });
+        });
+    });
 
-
+// LOGOUT
+    app.get('/api/logout', function (req, res) {
+        req.session.user = null;
+        res.send('Logged Out.');
+    });
 
 
 
