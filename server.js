@@ -37,55 +37,73 @@ app.get('/', function (req, res) {
 });
 
 app.get('/dash', function (req, res) {
-    db.Character.find({}, function (err, characters){    
-	   res.render('dashboard', {characters: characters});
+    db.Project.find({}).populate('characters').exec( function (err, projects){ 
+        console.log(projects); 
+        console.log('session', req.session);
+	   res.render('dashboard', {projects: projects, user: req.session.user });
     });
 });
 
-app.get('/new-character', function (req, res) {
-    res.render('charForm');
-});
-
-// Is the data connected?
-app.get('/api/characters', function (req, res){
-    // send character data as JSON
-    res.json(db.Character);
-});
-
-app.post('/api/characters', function (req, res){
-    console.log(req.body);
-    var newChar = req.body;
-    db.Character.create(newChar, function (err, newChar){
-        console.log(newChar);
-        //push into user model
-    });
-    // characters.push(newChar);
-    res.status(200).json(newChar);
-});
-
-app.delete('/api/characters/:id', function (req, res){
-    var targetId = req.params.id;
-    console.log(targetId);
-    db.Character.findOneAndRemove({_id:targetId}, function (err, deleteItem){
-        if (err) {return console.log('delete error: ' + err); }
-        res.json(deleteItem);
-    });
-});
-
-// app.get('/signup', function (req, res) {
-//     res.render('_signup');
+// app.get('/test', function(req, res) {
+//     db.User.findOne({_id: '563277666bad390e104a0a89'}, function(err, user) {
+//         console.log(user);
+//         res.json(user);
+//     });
 // });
+
+// FORM PAGES
+    app.get('/new-character', function (req, res) {
+        res.render('charForm');
+    });
+    app.get('/new-project', function (req, res) {
+        res.render('projectForm');
+    });
+
+// Is the character data connected?
+    app.get('/api/characters', function (req, res){
+        // send character data as JSON
+        res.json(db.Character);
+    });
+
+// POST CHARACTERS
+    app.post('/api/characters', function (req, res){
+        console.log(req.body);
+        var newChar = req.body;
+        db.Character.create(newChar, function (err, newChar){
+            console.log(newChar);
+            //push into project model
+        });
+        // characters.push(newChar);
+        res.status(200).json(newChar);
+    });
+
+// POST PROJECTS
+    app.post('/api/projects', function (req, res){
+        console.log(req.body);
+        var newProject = req.body;
+        db.Project.create(newProject, function (err, newProject){
+            console.log(newProject);
+            //push into user model
+        });
+        res.status(200).json(newProject);
+    });
+
+// DELETE CHARACTERS
+    app.delete('/api/characters/:id', function (req, res){
+        var targetId = req.params.id;
+        console.log(targetId);
+        db.Character.findOneAndRemove({_id:targetId}, function (err, deleteItem){
+            if (err) {return console.log('delete error: ' + err); }
+            res.json(deleteItem);
+        });
+    });
+
 
 app.get('/current-user', function (req, res) {
     res.json({ user: req.session.user });
 });
 
 // LOGIN
-    // app.get('/login', function (req, res) {
-    //     // res.send('login coming soon');
-    //     res.render('_login');
-    // });
-
     app.post('/login', function (req, res) {
         var user = req.body;
         console.log(user);

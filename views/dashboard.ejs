@@ -7,26 +7,29 @@
 <body id="dashPage">
 	<% include ./_bnav %>
 	<!-- CONTENT -->
+	<% for (i=0;i<projects.length;i++){ %>
 	<div class="container">
 		<div class="row">
-			<h2>Project Title <!-- Machinapocolypse --></h2>
-			<h5>Brief Description of project to be put in when you create a new project.</h5>
+			<h2><%=projects[i].title %><!-- Machinapocolypse --></h2>
+			<h5><%=projects[i].description %>(Brief Description of project to be put in when you create a new project.)</h5>
 		</div> <!-- col/row div -->
 	</div> <!-- container div -->
 	<div class="container">
 		<div class="row" id="charList">
-				<!-- Square card -->
-				<% for (i=0;i<characters.length;i++){ %>
-				<div class="col-md-2 col-sm-3 col-xs-6" data-id="#<%=characters[i]._id %>">
+			<!-- Square card -->
+				<% for (j=0;j < projects[i].characters.length;j++){ %>
+				<% var character = projects[i].characters[j]; %>
+				<% console.log('cwacter',projects[i]); %>
+				<div class="col-md-2 col-sm-3 col-xs-6" data-id="#<%=character._id %>">
 					<div class="demo-card-square mdl-card mdl-shadow--2dp">
 					  <div class="mdl-card__title mdl-card--expand">
-					    <h2 class="mdl-card__title-text"><%=characters[i].name %></h2>
+					    <h2 class="mdl-card__title-text"><%=character.name %></h2>
 					  </div>
 					  <div class="mdl-card__supporting-text">
 					  	Preview or small version of the Description
 					  </div>
 					  <div class="mdl-card__actions mdl-card--border">
-					    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-toggle="modal" data-target="#<%=characters[i]._id %>">
+					    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-toggle="modal" data-target="#<%=character._id %>">
 					      Details
 					    </a>
 					  </div>
@@ -36,21 +39,21 @@
 				<% } %>
 
 				<!-- Modal -->
-				<% for (i=0;i<characters.length;i++){ %>
-				<div class="modal fade" id="<%=characters[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<% for (j=0;j<projects[i].characters.length;j++){ %>
+				<% var character = projects[i].characters[j]; %>
+				<div class="modal fade" id="<%=character._id %>" tabindex="-1" role="dialog" aria-labelledby="modal-<%=character._id%>">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel"><%=characters[i].name %></h4>
+				        <h4 class="modal-title" id="modal-<%=character._id%>"><%=character.name %></h4>
 				      </div>
 				      <div class="modal-body">
-				        <strong>Age:</strong> <%=characters[i].age %><br />
-				        <strong>Hair:</strong> <%=characters[i].hair %><br />
-				        <strong>Skin Tone:</strong> <%=characters[i].skin %><br />
+				        <strong>Age:</strong> <%=character.age %><br />
+				        <strong>Hair:</strong> <%=character.hair %><br />
 				      </div>
 				      <div class="modal-footer">
-				      	<button class="btn btn-danger pull-left deleteBtn" type="delete" data-id="<%= characters[i]._id %>" data-dismiss="modal">Delete</button>
+				      	<button class="btn btn-danger pull-left deleteBtn" type="delete" data-id="<%= character._id %>" data-dismiss="modal">Delete</button>
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        <button type="button" class="btn btn-primary">Save changes</button>
 				      </div>
@@ -61,17 +64,6 @@
 
 				</div>
 				<div class="row">
-				<!-- List items -->
-				<!-- <ul id="charList">
-					<% for (i=0;i<characters.length;i++){ %>
-					  <li id="<%= characters[i]._id %>"><em><%=characters[i].name %></em><br />
-					  <strong>Age:</strong> <%=characters[i].age %><br />
-					  <strong>Hair:</strong> <%=characters[i].hair %><br />
-					  <strong>Skin Tone:</strong> <%=characters[i].skin %><br />
-					  <button class="btn deleteBtn" type="delete" data-id="<%= characters[i]._id %>">Delete</button>
-					  </li><br />
-					<% } %>
-				</ul> -->
 				<hr>
 			<!-- <div id="geo-col" class="col-md-3 col-md-offset-0"> -->
 				<!-- <p>Geography Column</p>
@@ -93,6 +85,7 @@
 			<!-- </div> -->
 		</div> <!-- col/row div -->
 	</div> <!-- container div -->
+	<% } %>
 <% include ./_footer %>
 </body>
 </html>

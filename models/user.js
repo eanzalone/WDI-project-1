@@ -43,7 +43,7 @@ userSchema.statics.createSecure = function (email, password, callback) {
 userSchema.statics.authenticate = function (email, password, callback) {
   // find user by email entered at log in
   //.select("passwordDigest email").exec(callback)
-  this.findOne({email: email}).select('email passwordDigest').exec(function (err, user) {
+  this.findOne({email: email}).select('email passwordDigest penname').exec(function (err, user) {
     console.log(user);
 
     // throw error if can't find user

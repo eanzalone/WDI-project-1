@@ -12,6 +12,15 @@ $('#newCharacter input').on('blur keyup', function() {
     }
 });
 
+$("#newProject").validate();
+$('#newProject input').on('blur keyup', function() {
+    if ($("#newProject").valid()) {
+        $('#projectSubmitBtn').prop('disabled', false);  
+    } else {
+        $('#projectSubmitBtn').prop('disabled', 'disabled');
+    }
+});
+
 // ADD NEW CHARACTER
 	$('#newCharacter').submit(function(e){
 		e.preventDefault();
@@ -22,9 +31,6 @@ $('#newCharacter input').on('blur keyup', function() {
 
 		$.post('/api/characters', characterData, function(newPost){
 			console.log(newPost);
-			// WRITE PROPER APPEND DATA
-			// $('#charList').append('<li>' + newPost.name + '</li>');
-		    // $('#newCharacter')[0].reset();
 		});
 	});
 
@@ -45,10 +51,24 @@ $('#newCharacter input').on('blur keyup', function() {
 		});
 	});
 
+// ADD NEW PROJECT
+	$('#newProject').submit(function(e){
+		e.preventDefault();
+		console.log('Submit Clicked!');
+
+		var projectData = $(this).serialize();
+		console.log(projectData);
+		$.post('/api/projects', projectData, function(newPost){
+			console.log(newPost);
+		});
+	});
+
+// DELETE PROJECT-????
+
 // CHECK AUTH
 	function checkAuth() {
 		$.get('/current-user', function (data) {
-			console.log(data);
+			//console.log(data);
 			if (data.user) {
 				$('.not-logged-in').hide();
 				$('.logged-in').show();
