@@ -37,20 +37,27 @@ app.get('/', function (req, res) {
 });
 
 app.get('/dash', function (req, res) {
-    db.User.findOne({_id: req.session.userId}).populate('projects').exec( function (err, taco){
-    //db.Project.find({}).populate('characters').exec( function (err, projects){ 
-        console.log(taco); 
-        //console.log('session', req.session);
-	   res.render('dashboard', {projects: taco.projects, user: req.session.user });
+    // scary nested populate!  we wish we had you mongoose-deep-populate <3
+    db.User
+    .findOne()
+    .populate('projects')
+    .exec(function(err, docs) {
+      if(err) return callback(err);
+      db.User.populate(docs, {
+        path: 'projects.characters',
+        model: 'Character'
+      },
+      function(err, burrito) {
+        if(err) return callback(err);
+        console.log('burrito = ', burrito); // This object should now be populated accordingly.
+        console.log('burrito.projects=', burrito.projects);
+        console.log('some char', burrito.projects[0].characters);
+        res.render('dashboard', {projects: burrito.projects, user: req.session.user });
+      });
     });
 });
 
-// app.get('/test', function(req, res) {
-//     db.User.findOne({_id: '563277666bad390e104a0a89'}, function(err, user) {
-//         console.log(user);
-//         res.json(user);
-//     });
-// });
+
 
 // FORM PAGES
     app.get('/new-character', function (req, res) {
