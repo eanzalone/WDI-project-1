@@ -7,11 +7,8 @@ Home
 Make New- select type from dropdown
 Jots -->
 
-<!-- JUMBOTRON -->
-	<!-- <div class="jumbotron">
-	  <h1>Jots</h1>
-	</div> -->
-	<!-- NAVBAR -->
+
+<!-- NAVBAR -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,19 +23,19 @@ Jots -->
 	      <a class="navbar-brand" href="#">Jots<!-- (logo?) --></a>
 	    </div>
 <!-- NAVAR LEFT -->
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li><a href="/dash">Dashboard</a></li>
-	        <li><a href="/new-character">New Character</a></li>
-	      </ul>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/dash">Dashboard</a></li>
+        <li><a href="/new-character">New Character</a></li>
+      </ul>
 <!-- NAVBAR RIGHT -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <!-- <li><a href="#">Link C</a></li> -->
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.penname %> <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="/new-project">New Project</a></li>
+	            <li id="newProjBtn"><a href="/new-project">New Project</a></li>
 	            <li role="separator" class="divider"></li>
 	            <li id="logoutBtn"><a href="/">Log Out</a></li>
 	          </ul>

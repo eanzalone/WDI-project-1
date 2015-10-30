@@ -6,16 +6,30 @@
 <!-- VIEWABLE APP -->
 <body>
 	<% include ./_bnav %>
-	<div class="input-group">
+	<div class="input-group col-xs-offset-3">
 		<form action="" id="newCharacter">
-		    <input type="text" name="name" placeholder="Character Name" required>
-		    <input type="number" name="age" placeholder="Age">
-		    <input type="text" name="hair" placeholder="Hair Color">
-		    <!-- <input type="text" name="skin" placeholder="Skin Tone"> -->
+		    <input type="text" name="name" placeholder="Character Name" required><br />
+		    <input type="number" name="age" placeholder="Age"><br />
+		    <input type="text" name="hair" placeholder="Hair Color"><br />
+		    <input type='hidden' name='selProj' value=''>
+
 		    <!-- DROPDOWN MENU TO SELECT PROJECT -->
+		    <div class="dropdown">
+		      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		        Choose a Project
+		        <span class="caret"></span>
+		      </button>
+		      <ul class="dropdown-menu" aria-labelledby="projectDropdownMenu">
+		      <% console.log('dropdown loaded',projects)%>
+		        <% for (var i = 0; i < projects.length; i++) { %>
+		        <li><a href="" data-value="<%= projects[i]._id %>"><%= projects[i].title %></a></li>
+		        <% } %>
+		      </ul>
+		    </div>
 
 		    <button class="btn" type="submit" id="charSubmitBtn" disabled="true">Submit</button>
 		</form>
+	</div>
 	<% include ./_footer %>
 </body>
 </html>

@@ -27,7 +27,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   secret: 'SuperSecretCookie',
-  cookie: { maxAge: 600000 }
+  cookie: { maxAge: 999999999999999999999999999 }
 }));
 
 // PAGES //
@@ -53,10 +53,12 @@ app.get('/dash', function (req, res) {
 
 // FORM PAGES
     app.get('/new-character', function (req, res) {
-        res.render('charForm');
+        db.Project.find({}, function (err, projects){
+            res.render('charForm', { projects: projects, user: req.session.user });
+        });
     });
     app.get('/new-project', function (req, res) {
-        res.render('projectForm');
+        res.render('projectForm', { user: req.session.user });
     });
 
 // Is the character data connected?
@@ -67,12 +69,19 @@ app.get('/dash', function (req, res) {
 
 // POST CHARACTERS
     app.post('/api/characters', function (req, res){
-        console.log(req.body);
+        console.log('body',req.body);
         var newChar = req.body;
-        db.Character.create(newChar, function (err, newChar){
-            console.log(newChar);
-            //push into project model
+        var story = req.body.selProj;
+        db.Project.findOne({_id: story}, function (err, project){
+            db.Character.create(newChar, function (err, newChar){
+                console.log(newChar);
+                project.characters.push(newChar);
+                project.save();
+            });
         });
+        // db.Character.create(newChar, function (err, newChar){
+        //     console.log(newChar);
+        // });
         // characters.push(newChar);
         res.status(200).json(newChar);
     });
@@ -84,6 +93,7 @@ app.get('/dash', function (req, res) {
         db.Project.create(newProject, function (err, newProject){
             console.log(newProject);
             //push into user model
+
         });
         res.status(200).json(newProject);
     });

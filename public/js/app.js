@@ -31,7 +31,16 @@ $('#newProject input').on('blur keyup', function() {
 
 		$.post('/api/characters', characterData, function(newPost){
 			console.log(newPost);
+			window.location.href='/dash';
 		});
+	});
+
+// DROPDOWN CHAR FORM
+	$(".dropdown-menu li a").click(function(e){
+	  e.preventDefault();
+	  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+	  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+	  $('input[name=selProj]').val($(this).data('value'));
 	});
 
 // DELETE CHARACTER DETAIL
@@ -60,8 +69,15 @@ $('#newProject input').on('blur keyup', function() {
 		console.log(projectData);
 		$.post('/api/projects', projectData, function(newPost){
 			console.log(newPost);
+			window.location.href='/dash';
 		});
 	});
+
+ 	$('#newProjBtn').click(function(e){
+ 		e.preventDefault();
+ 		console.log('new project clicked');
+ 		window.location.href='/new-project';
+ 	});
 
 // DELETE PROJECT-????
 

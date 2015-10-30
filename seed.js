@@ -11,12 +11,7 @@ var db = require("./models/index.js");
 //     name: String,
 //     role: String, //main or supporting
 //     age: Number,
-//     gender: String,
-//     height: Number, // ft/in or cm?
 //     hair: String,
-//     eyes: String,
-//     skin: String,
-//     build: String,
 //     blurb: String, // character limit
 //     description: String
 // });
@@ -45,18 +40,17 @@ db.User.createSecure(user1.email, user1.password, function (err, user) {
 	user.save();
 	console.log(user);
 	db.Project.create(project1, function (err, taco){
-		console.log('created ', taco);
+		console.log('created: ', taco);
 		user.projects.push(taco);
 		user.save();
 		console.log('user is', user);
 		db.Character.create(char1, function (err, burrito){
-			console.log('created ', burrito);
+			console.log('created: ', burrito);
 			taco.characters.push(burrito);
-			//taco.save();
 			console.log(user);
 		});
 		db.Character.create(char2, function (err, burrito){
-			console.log('created ', burrito);
+			console.log('created: ', burrito);
 			taco.characters.push(burrito);
 			taco.save();
 			console.log(project);
