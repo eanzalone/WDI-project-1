@@ -26,7 +26,7 @@
 					    <h2 class="mdl-card__title-text"><%= character.name %></h2>
 					  </div>
 					  <div class="mdl-card__supporting-text">
-					  	Preview or small version of the Description
+					  	<%= character.blurb %>
 					  </div>
 					  <div class="mdl-card__actions mdl-card--border">
 					    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-toggle="modal" data-target="#<%=character._id %>">
@@ -49,13 +49,25 @@
 				        <h4 class="modal-title" id="modal-<%=character._id%>"><%=character.name %></h4>
 				      </div>
 				      <div class="modal-body">
+				      	<strong>Role:</strong> <%=character.role %><br />
+				      	<strong>Gender:</strong> <%=character.gender %><br />
 				        <strong>Age:</strong> <%=character.age %><br />
 				        <strong>Hair:</strong> <%=character.hair %><br />
+				        <strong>Eye Color:</strong> <%=character.eyes %><br />
+				        <strong>Skin Tone:</strong> <%=character.skin %><br />
+				        <strong>Height:</strong> <%=character.height %>cm<br />
+				        <strong>Body Type:</strong> <%=character.build %><br />
+				        <strong>Education:</strong> <%=character.education %><br />
+				        <strong>Skills:</strong> <%=character.skills %><br />
+				        <strong>Hopes:</strong> <%=character.hopes %><br />
+				        <strong>Fears:</strong> <%=character.fears %><br />
+				        <strong>Goals:</strong> <%=character.goals %><br />
+				        <strong>More Details:</strong> <%=character.description %>
 				      </div>
 				      <div class="modal-footer">
 				      	<button class="btn btn-danger pull-left deleteBtn" type="delete" data-id="<%= character._id %>" data-dismiss="modal">Delete</button>
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        <button type="button" class="btn btn-primary">Save changes</button>
+				        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
 				      </div>
 				    </div>
 				  </div>

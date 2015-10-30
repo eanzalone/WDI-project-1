@@ -4,14 +4,23 @@
 <% include ./_head %>
 
 <!-- VIEWABLE APP -->
-<body>
+<body id="projectFormPage">
 	<% include ./_bnav %>
-	<div class="input-group">
+	<div class="input-group col-xs-offset-5">
 		<form action="" id="newProject">
-		    <input type="text" name="title" placeholder="Project Title" required>
-		    <input type="text" name="description" placeholder="Description" required>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="text" name="title" id="sample3" required>
+			    <label class="mdl-textfield__label" for="sample3">Project Title</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="text" name="description" id="sample3" required>
+			    <label class="mdl-textfield__label" for="sample3">Description</label>
+			</div>
+			<br />
 		    <button class="btn" type="submit" id="projectSubmitBtn" disabled="true">Submit</button>
 		</form>
+	</div>
 	<% include ./_footer %>
 </body>
 </html>

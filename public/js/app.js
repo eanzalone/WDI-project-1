@@ -3,23 +3,24 @@ console.log('Client Side JS is connected.');
 
 $(document).ready(function(){
 
-$("#newCharacter").validate();
-$('#newCharacter input').on('blur keyup', function() {
-    if ($("#newCharacter").valid()) {
-        $('#charSubmitBtn').prop('disabled', false);  
-    } else {
-        $('#charSubmitBtn').prop('disabled', 'disabled');
-    }
-});
+// DISABLE SUBMIT BUTTON ON FORMS
+	$("#newCharacter").validate();
+	$('#newCharacter input').on('blur keyup', function() {
+	    if ($("#newCharacter").valid()) {
+	        $('#charSubmitBtn').prop('disabled', false);  
+	    } else {
+	        $('#charSubmitBtn').prop('disabled', 'disabled');
+	    }
+	});
 
-$("#newProject").validate();
-$('#newProject input').on('blur keyup', function() {
-    if ($("#newProject").valid()) {
-        $('#projectSubmitBtn').prop('disabled', false);  
-    } else {
-        $('#projectSubmitBtn').prop('disabled', 'disabled');
-    }
-});
+	$("#newProject").validate();
+	$('#newProject input').on('blur keyup', function() {
+	    if ($("#newProject").valid()) {
+	        $('#projectSubmitBtn').prop('disabled', false);  
+	    } else {
+	        $('#projectSubmitBtn').prop('disabled', 'disabled');
+	    }
+	});
 
 // ADD NEW CHARACTER
 	$('#newCharacter').submit(function(e){
@@ -145,6 +146,33 @@ $('#newProject input').on('blur keyup', function() {
 		});
 	});
 
+// TOGGLE FORMS ON SIGNUP PAGE
+	$('#gotoLogin').click(function(){
+		console.log('Go To Login Clicked');
+		$('#signup-form').addClass('hideForm');
+			console.log('Add class to signup');
+		// this adds the class to my button, which makes it not show.
+		$('#login-form').removeClass('hideForm');
+			console.log('Remove class from Login');
+		// this adds the class to my button, which makes it show.
+		$('#gotoSignup').removeClass('hideForm');
+			console.log('Show Signup Button');
+		$('#gotoLogin').addClass('hideForm');
+			console.log('Hide Login Button');
+	});
 
+	$('#gotoSignup').click(function(){
+		console.log('Go To Login Clicked');
+		$('#signup-form').removeClass('hideForm');
+			console.log('Add class to signup');
+		// this adds the class to my button, which makes it not show.
+		$('#login-form').addClass('hideForm');
+			console.log('Remove class from Login');
+		// this adds the class to my button, which makes it show.
+		$('#gotoSignup').addClass('hideForm');
+			console.log('Show Signup Button');
+		$('#gotoLogin').removeClass('hideForm');
+			console.log('Hide Login Button');
+	});
 
 }); // document ready function close

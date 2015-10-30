@@ -4,16 +4,104 @@
 <% include ./_head %>
 
 <!-- VIEWABLE APP -->
-<body>
+<body id="charFormPage">
 	<% include ./_bnav %>
-	<div class="input-group col-xs-offset-3">
+	<div class="input-group col-xs-offset-4">
 		<form action="" id="newCharacter">
-		    <input type="text" name="name" placeholder="Character Name" required><br />
-		    <input type="number" name="age" placeholder="Age"><br />
-		    <input type="text" name="hair" placeholder="Hair Color"><br />
+
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="name" id="nameField" required />
+				<label class="mdl-textfield__label" for="nameField">Name</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="role" id="roleField" />
+				<label class="mdl-textfield__label" for="roleField">Main or Supporting</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="number" name="age" id="ageField" />
+				<label class="mdl-textfield__label" for="ageField">Age</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="gender" id="genderField" />
+				<label class="mdl-textfield__label" for="genderField">Gender</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="height" id="heightField" />
+				<label class="mdl-textfield__label" for="heightField">Height</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="hair" id="hairField" />
+				<label class="mdl-textfield__label" for="hairField">Hair Color</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="eyes" id="eyeField" />
+				<label class="mdl-textfield__label" for="eyeField">Eye Color</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="skin" id="skinField" />
+				<label class="mdl-textfield__label" for="skinField">Skin Tone</label>
+			</div>
+			<br />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="build" id="buildField" />
+				<label class="mdl-textfield__label" for="buildField">Body Type / Build</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" maxlength="100" rows= "3" name="blurb" id="blurbField" ></textarea>
+			    <label class="mdl-textfield__label" for="blurbField">Blurb</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="education" id="educationField" ></textarea>
+			    <label class="mdl-textfield__label" for="educationField">Education</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="skills" id="skillsField" ></textarea>
+			    <label class="mdl-textfield__label" for="skillsField">Skills</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="hopes" id="hopesField" ></textarea>
+			    <label class="mdl-textfield__label" for="hopesField">Hopes</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="fears" id="fearsField" ></textarea>
+			    <label class="mdl-textfield__label" for="fearsField">Fears</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="goals" id="goalsField" ></textarea>
+			    <label class="mdl-textfield__label" for="goalsField">Goals</label>
+			</div>
+			<br />
+			<div class="mdl-textfield mdl-js-textfield">
+			    <textarea class="mdl-textfield__input" type="text" rows= "3" name="description" id="descriptionField" ></textarea>
+			    <label class="mdl-textfield__label" for="descriptionField">Detailed Description</label>
+			</div>
+			<!-- <br /> -->
 		    <input type='hidden' name='selProj' value=''>
 
 		    <!-- DROPDOWN MENU TO SELECT PROJECT -->
+		    <!-- want to use Material Design / in the menu section -->
 		    <div class="dropdown">
 		      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		        Choose a Project

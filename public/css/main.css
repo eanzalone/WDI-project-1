@@ -1,37 +1,107 @@
-/*BACKGROUND IMAGE*/
-#splashPage {
-  background-image: url('http://cdn.tutsplus.com/psd/uploads/legacy/0457_Create_a_Realistic_Paper_Texture/final-1-large.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  text-align: center;
-}
-
-#dashPage {
-  /*background-image: url('http://www.resimsi.com/wp-content/uploads/2015/07/wallpaper-cool-background-paper-watercolor.jpg');*/
-  /*OR*/
-  /*background-image: url('http://7-themes.com/data_images/out/68/7005832-old-paper-photos.jpg');*/
-  /*TEMP*/
-  background-color: tan;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-}
-
-#front-page {
-  text-align: center;
-}
+/*DASH BACKGROUND IMAGEs*/
+  #dashPage {
+    /*background-image: url('http://www.resimsi.com/wp-content/uploads/2015/07/wallpaper-cool-background-paper-watercolor.jpg');*/
+    /*OR*/
+    /*background-image: url('http://7-themes.com/data_images/out/68/7005832-old-paper-photos.jpg');*/
+    background-color: tan; /*TEMP*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
 
 /*PREVIEW CARD*/
-.demo-card-square.mdl-card {
-  width: 150px;
-  height: 150px;
-}
-.demo-card-square > .mdl-card__title {
-  color: #fff;
-  background: skyblue;
-    /*url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;*/
-}
+  .demo-card-square.mdl-card {
+    width: 150px;
+    height: 150px;
+  }
+  .demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: skyblue;
+  }
+
+/*FRONT PAGE*/
+  #front-page { /*Body*/
+    text-align: center;
+    /*background-image: url('http://waalweb.com/wp-content/uploads/2015/09/Textured-Wallpaper-T4.jpg');*/
+    background-color: tan; /*TEMP*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+  #hpTitle { /*Jots Title*/
+    padding-top: 80px;
+    font-family: 'Rock Salt';
+  }
+
+  .formTitle { /*Login and Signup Headings*/
+    font-family: 'Rock Salt';
+    padding-top: 100px;
+  }
+
+  .form-group { /*Form Input Fields*/
+    font-family: Inconsolata;
+  }
+
+  .btn-info { /*Toggle Form Buttons*/
+    font-family: Inconsolata;
+  }
+
+  .hideForm { /*Assist in Toggle*/
+    display: none;
+  }
+
+  .desText { /*Describing Text*/
+    font-family: Inconsolata;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+/*FOOTER*/
+  #footer {
+    /*position:fixed;
+    left:0px;
+    bottom:0px;*/
+    padding-bottom: 5px;
+    padding-top: 40px;
+    /*height:30px;*/
+    width:100%;
+    font-family: Inconsolata;
+    text-align: center;
+
+  }
+
+/*PROJECT FORM PAGE*/
+  #projectFormPage {
+    background-color: tan; /*TEMP*/
+  }
+
+/*CHARACTER FORM PAGE*/
+  #charFormPage {
+    background-color: tan; /*TEMP*/
+  }
+
+/*NAVBAR*/
+  .navbar {
+    background-color: #CEA268;
+    border: #CEA268;
+    /*I want to change the font colors. How?*/
+  }
 
 /*OTHER CSS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
