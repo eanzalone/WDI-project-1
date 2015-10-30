@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 app.get('/dash', function (req, res) {
     // scary nested populate!  we wish we had you mongoose-deep-populate <3
     db.User
-    .findOne()
+    .findOne({_id: req.session.userId})
     .populate('projects')
     .exec(function(err, docs) {
       if(err) return callback(err);
@@ -51,7 +51,7 @@ app.get('/dash', function (req, res) {
         if(err) return callback(err);
         console.log('burrito = ', burrito); // This object should now be populated accordingly.
         console.log('burrito.projects=', burrito.projects);
-        console.log('some char', burrito.projects[0].characters);
+        //console.log('some char', burrito.projects[0].characters);
         res.render('dashboard', {projects: burrito.projects, user: req.session.user });
       });
     });
