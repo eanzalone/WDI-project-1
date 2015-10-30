@@ -37,10 +37,11 @@ app.get('/', function (req, res) {
 });
 
 app.get('/dash', function (req, res) {
-    db.Project.find({}).populate('characters').exec( function (err, projects){ 
-        console.log(projects); 
-        console.log('session', req.session);
-	   res.render('dashboard', {projects: projects, user: req.session.user });
+    db.User.findOne({_id: req.session.userId}).populate('projects').exec( function (err, taco){
+    //db.Project.find({}).populate('characters').exec( function (err, projects){ 
+        console.log(taco); 
+        //console.log('session', req.session);
+	   res.render('dashboard', {projects: taco.projects, user: req.session.user });
     });
 });
 
@@ -79,10 +80,6 @@ app.get('/dash', function (req, res) {
                 project.save();
             });
         });
-        // db.Character.create(newChar, function (err, newChar){
-        //     console.log(newChar);
-        // });
-        // characters.push(newChar);
         res.status(200).json(newChar);
     });
 
@@ -90,12 +87,21 @@ app.get('/dash', function (req, res) {
     app.post('/api/projects', function (req, res){
         console.log(req.body);
         var newProject = req.body;
-        db.Project.create(newProject, function (err, newProject){
-            console.log(newProject);
-            //push into user model
+        // console.log('USER ID: ',req.session.user._id);
+
+        var selUser = req.session.userId;
+        db.User.findOne({_id: selUser}, function (err, user){
+            db.Project.create(newProject, function (err, newProject){
+                console.log(newProject);
+                user.projects.push(newProject);
+                user.save();
+                console.log(user);
+                res.status(200).json(newProject);
+
+            });
+
 
         });
-        res.status(200).json(newProject);
     });
 
 // DELETE CHARACTERS

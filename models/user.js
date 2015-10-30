@@ -53,7 +53,7 @@ userSchema.statics.authenticate = function (email, password, callback) {
     // if found user, check if password is correct
     } else if (user.checkPassword(password)) {
       callback(null, user);
-    }
+    } //else for and error
   });
 };
 
