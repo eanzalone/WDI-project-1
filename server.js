@@ -192,6 +192,6 @@ app.get('/current-user', function (req, res) {
 
 
 // CONNECTED SERVER //
-app.listen(process.env.PORT || 3000, function (){
-  console.log("Server Connected to http://localhost:3000/");
+app.listen(process.env.PORT || 3001, function (){
+  console.log("Server Connected to http://localhost:3001/");
 });

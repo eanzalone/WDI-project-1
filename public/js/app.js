@@ -3,6 +3,21 @@ console.log('Client Side JS is connected.');
 
 $(document).ready(function(){
 
+	function toggleLogins() {
+
+		$('#signup-form').addClass('hideForm');
+			console.log('Add class to signup');
+		// this adds the class to my button, which makes it not show.
+		$('#login-form').removeClass('hideForm');
+			console.log('Remove class from Login');
+		// this adds the class to my button, which makes it show.
+		$('#gotoSignup').removeClass('hideForm');
+			console.log('Show Signup Button');
+		$('#gotoLogin').addClass('hideForm');
+			console.log('Hide Login Button');
+
+	}
+
 // DISABLE SUBMIT BUTTON ON FORMS
 	$("#newCharacter").validate();
 	$('#newCharacter input').on('blur keyup', function() {
@@ -106,6 +121,7 @@ $(document).ready(function(){
 		$.post('/users', user, function (data) {
 			console.log(data);
 			checkAuth();
+			toggleLogins();
 		});
 	});
 
@@ -147,18 +163,20 @@ $(document).ready(function(){
 	});
 
 // TOGGLE FORMS ON SIGNUP PAGE
+
 	$('#gotoLogin').click(function(){
 		console.log('Go To Login Clicked');
-		$('#signup-form').addClass('hideForm');
-			console.log('Add class to signup');
-		// this adds the class to my button, which makes it not show.
-		$('#login-form').removeClass('hideForm');
-			console.log('Remove class from Login');
-		// this adds the class to my button, which makes it show.
-		$('#gotoSignup').removeClass('hideForm');
-			console.log('Show Signup Button');
-		$('#gotoLogin').addClass('hideForm');
-			console.log('Hide Login Button');
+		toggleLogins();
+		// $('#signup-form').addClass('hideForm');
+		// 	console.log('Add class to signup');
+		// // this adds the class to my button, which makes it not show.
+		// $('#login-form').removeClass('hideForm');
+		// 	console.log('Remove class from Login');
+		// // this adds the class to my button, which makes it show.
+		// $('#gotoSignup').removeClass('hideForm');
+		// 	console.log('Show Signup Button');
+		// $('#gotoLogin').addClass('hideForm');
+		// 	console.log('Hide Login Button');
 	});
 
 	$('#gotoSignup').click(function(){
