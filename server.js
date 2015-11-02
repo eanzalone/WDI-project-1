@@ -147,12 +147,16 @@ app.get('/current-user', function (req, res) {
     app.post('/users', function (req, res) {
         var userParams = req.body;
         db.User.createSecure(userParams.email, userParams.password, function (err, user) {
-            user.penname = req.body.penname;
-            user.save();
-            console.log(err || user);
-            // console.log(user);
-            req.session.userId = user._id;
-            res.json({ user: user, msg: "User Created Successfully!" });
+            if (err) {
+                console.log("error:" + err);
+            }else {
+                user.penname = req.body.penname;
+                user.save();
+                req.session.userId = user._id;
+                req.session.user = user;
+                res.json(user);
+            }
+
         });
     });
 
