@@ -119,9 +119,14 @@ $(document).ready(function(){
 		var user = $(this).serialize();
 
 		$.post('/users', user, function (data) {
-			console.log(data);
-			checkAuth();
-			toggleLogins();
+		
+		})
+		.success(function(data) {
+			console.log("new user created", data);
+			window.location.href = '/dash';
+		})
+		.error(function(data) {
+			console.log("failed to create new user");
 		});
 	});
 
