@@ -10,8 +10,8 @@
 	<% for (i=0;i<projects.length;i++){ %>
 	<div class="container">
 		<div class="row">
-			<h2><%=projects[i].title %><!-- Machinapocolypse --></h2>
-			<h5><%=projects[i].description %><!-- (Brief Description of project to be put in when you create a new project.) --></h5>
+			<h2 class="projectTitles"><%=projects[i].title %><!-- Machinapocolypse --></h2>
+			<h5 class="projDes"><%=projects[i].description %><!-- (Brief Description of project to be put in when you create a new project.) --></h5>
 		</div> <!-- col/row div -->
 	</div> <!-- container div -->
 	<div class="container">
@@ -28,11 +28,11 @@
 					  <div class="mdl-card__supporting-text">
 					  	<%= character.blurb %>
 					  </div>
-					  <div class="mdl-card__actions mdl-card--border">
+					  <!-- <div class="mdl-card__actions mdl-card--border"> -->
 					    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-toggle="modal" data-target="#<%=character._id %>">
 					      Details
 					    </a>
-					  </div>
+					  <!-- </div> -->
 					</div>
 				<br /> <!-- PUTS SPACE BETWEEN BOXES -->
 				</div>

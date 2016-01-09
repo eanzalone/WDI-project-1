@@ -10,13 +10,23 @@
   }
 
 /*PREVIEW CARD*/
-  .demo-card-square.mdl-card {
+  .mdl-card {
     width: 150px;
     height: 150px;
+    background-image: url('http://www.resimsi.com/wp-content/uploads/2015/07/wallpaper-cool-background-paper-watercolor.jpg');
+    font-family: Inconsolata;
+    text-align: justify;
   }
-  .demo-card-square > .mdl-card__title {
-    color: #fff;
-    background: skyblue;
+  .mdl-card__title-text {
+    text-align: left;
+    font-family: Inconsolata;
+  }
+  .mdl-card__title {
+    padding-bottom: 0px;
+  }
+  .mdl-button {
+    text-align: right;
+    font-family: Inconsolata;
   }
 
 /*FRONT PAGE*/
@@ -30,7 +40,7 @@
   }
 
   #hpTitle { /*Jots Title*/
-    padding-top: 80px;
+    padding-top: 100px;
     font-family: 'Rock Salt';
   }
 
@@ -53,8 +63,8 @@
 
   .desText { /*Describing Text*/
     font-family: Inconsolata;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
 /*FOOTER*/
@@ -71,6 +81,15 @@
 
   }
 
+/*DASHBOARD*/
+  .projectTitles {
+    font-family: 'Rock Salt';
+  }
+  .projDes {
+    font-family: Inconsolata;
+    margin-left: 50px;
+  }
+
 /*PROJECT FORM PAGE*/
   #projectFormPage {
     background-color: tan; /*TEMP*/
@@ -83,13 +102,18 @@
 
 /*NAVBAR*/
   .navbar {
-    background-color: #CEA268;
-    border: #CEA268;
-    /*I want to change the font colors. How?*/
+    /*background-color: #CEA268;*/
+    /*border: #CEA268;*/
+    background-image: url('http://7-themes.com/data_images/out/68/7005832-old-paper-photos.jpg');
+    /*-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(210,180,140,1)), to(rgba(210,180,140,1)))*/
   }
 
 /*OTHER CSS*/
-
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
 
 
 
